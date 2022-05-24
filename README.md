@@ -2,7 +2,7 @@
 This repository contains the code to replicate the results in the paper: "GULP: a prediction-based metric between representations".
 
 
-The experiments are split into three groups which study distances between network representations on MNIST, ImageNet, and CIFAR. For all experiments, distances between network representations are presaved in this repository. However, if the user wishes to recompute these distances or access the network representations themselves (which are memory intensive), they will need to load/train the corresponding network architectures and recompute the distances between them. We have provided the necessary scripts to load/train all models and compute distances between them in parallel on a slurm cluster.
+The experiments are split into three groups which study distances between network representations on MNIST, ImageNet, and CIFAR. For all experiments, distances between network representations are presaved in this repository. However, if the user wishes to recompute these distances or access the network representations themselves (which are memory intensive), they will need to load/train the corresponding network architectures and recompute the distances between them. 
 
 ## MNIST Experiments (`mnist_experiments/`)
 * Distances between fully-connected ReLU networks of varying widths and depths are saved in `distances/widthdepth/`.
@@ -15,3 +15,6 @@ The experiments are split into three groups which study distances between networ
 * All visualizations of ImageNet networks in Figures 6, 12, 13 and 14 of the paper can be reproduced in the notebook `embed_models.ipynb`.
 
 ## CIFAR Experiments (`cifar_experiments/`)
+* Distances between Resnet18 networks trained on CIFAR10 at every epoch (of 50 epochs) of training are included in the zip file cifar_dists.zip. To plot these distances, adjust the working directory "dirwithreps" based on the unzipped file in the notebook plot_CIFAR_distances_during_training.ipynb and run all cells.
+
+* We do not include code to retrain the networks, but refer to the FFCV package and/or any standard training code for training Resnet18 architectures on CIFAR10 and saving the final representations. Given representations saved in the hierarchy e.g. cifar1/test/epoch3/latents.pkl, where 1 indicates the index of the model, 3 is the epoch, test is the split of the data on which the representations were generated, and latents.pkl contains a dictionary with key 'last', the script compute_CIFAR_distances_from_saved_representations.py recomputes the provided distances.
