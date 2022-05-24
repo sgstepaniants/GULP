@@ -14,4 +14,4 @@ The experiments are split into three groups which study distances between networ
 * To recompute these distances, first clear the folders `distances/pretrained` and `distances/untrained`. Load all untrained and pretrained PyTorch ImageNet models by running `load_models.py`. Then load the ImageNet dataset into a local folder and save its path. Paste this path into the file `compute_reps.py` and run the slurm script `rep_loop.sh` which will save the final-layer representations of all pretrained and untrained ImageNet networks loaded from PyTorch. Finally, run the slurm script `dist_loop.sh` to compute all pairwise distance between these final-layer representations which will be saved in `distances/train/pretrained` and `distances/train/untrained` respectively.
 * All visualizations of ImageNet networks in Figures 6, 12, 13 and 14 of the paper can be reproduced in the notebook `embed_models.ipynb`.
 
-## CIFAR Experiments (`cifar_experiments`):
+## CIFAR Experiments (`cifar_experiments/`):
