@@ -13,10 +13,10 @@ The experiments are split into three groups which study distances between networ
 ## ImageNet Experiments (`imagenet_experiments/`)
 * Distances between pretrained and untrained state-of-the-art ImageNet networks taken from https://pytorch.org/vision/stable/models.html#classification are saved in `distances/pretrained/` and `distances/untrained/` respectively.
 * To recompute these distances, first clear the folders `distances/pretrained` and `distances/untrained`. Load all untrained and pretrained PyTorch ImageNet models by running `load_models.py`. Then load the ImageNet dataset into a local folder and save its path. Paste this path into the file `compute_reps.py` and run the slurm script `rep_loop.sh` which will save the final-layer representations of all pretrained and untrained ImageNet networks loaded from PyTorch. Finally, run the slurm script `dist_loop.sh` to compute all pairwise distance between these final-layer representations which will be saved in `distances/train/pretrained` and `distances/train/untrained` respectively.
+* All visualizations of ImageNet networks in Figures 1, 6, 12, 13 and 14 of the paper can be reproduced in the notebook `embed_models.ipynb`.
 * The relationships between distances on ImageNet models in Figures 2 and 8 can be reproduced in the notebook `Compare_other_distances_to_GULP.ipynb`.
 * The convergence of the plug-in estimator in Figures 3 and 10 can be reproduced in the notebook `Convergence_of_the_plug_in_estimator.ipynb'.
 * How GULP captures generalization performance on linear predictors in Figure 4 can be reproduced in the notebook `GULP_versus_linear_predictor_generalization.ipynb`. This requires loading the ImageNet representations (see above).
-* All visualizations of ImageNet networks in Figures 6, 12, 13 and 14 of the paper can be reproduced in the notebook `embed_models.ipynb`.
 * The GULP distance versus generalization performance on logistic predictors in Figure 17 can be reproduced in the notebook `GULP_versus_logistic_predictor_generalization.ipynb`. This requires loading the ImageNet representations (see above).
 
 ## CIFAR Experiments (`cifar_experiments/`)
