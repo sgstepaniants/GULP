@@ -8,7 +8,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 
-sys.path.append(os.path.abspath("../"))
+sys.path.append(os.path.abspath(".."))
 from distance_functions import *
 
 lmbda_range = np.power(10.0, range(-20, 5))

@@ -37,6 +37,8 @@ if __name__ == "__main__":
     # for the second trained network, epoch 3, test reps
     # 
     # latents.pkl should contain a file with key 'last' containing the last hidden layer representations
+    # To generate Figure 7, we trained CIFAR Resnets using https://github.com/MadryLab/failure-directions, which relies
+    # on FFCV (https://github.com/libffcv/ffcv) for fast training 
     dir_for_saved_reps = '/saved/cifar_representations/' 
 
     if args.run_name is not None:

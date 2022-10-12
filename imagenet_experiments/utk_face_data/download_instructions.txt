@@ -1,0 +1,5 @@
+1. Download the UTKFace dataset file: UTKFace.tar.gz from https://drive.google.com/drive/folders/0BxYys69jI14kU0I1YUQyY1ZDRUE?resourcekey=0-01Pth1hq20K4kuGVkp3oBw
+
+2. Unzip by running "tar -xf UTKFace.tar.gz"
+
+3. See ../GULP_versus_linear_predictor_generalization_age_dataset.ipynb for how to generate the representations of this dataset

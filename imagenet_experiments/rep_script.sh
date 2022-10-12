@@ -5,4 +5,4 @@ source /etc/profile
 module load anaconda/2022a
 
 # Run the script
-python compute_reps.py $1 $2
+python compute_imagenet_reps.py $1 $2

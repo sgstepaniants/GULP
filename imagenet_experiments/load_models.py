@@ -1,16 +1,11 @@
 import os
 import torch
 import torchvision.models as models
-import pathlib
-from pathlib import Path
 
-home = str(Path.home())
-
-def clearhub(hubdir = f"{home}/.cache/torch/hub/checkpoints"):
-    if os.path.isdir(hubdir):
-        filelist = os.listdir(hubdir)
-        for f in filelist:
-            os.remove(os.path.join(hubdir, f))
+def clearhub(hubdir = "/home/gridsan/gstepaniants/.cache/torch/hub/checkpoints"):
+    filelist = os.listdir(hubdir)
+    for f in filelist:
+        os.remove(os.path.join(hubdir, f))
 
 clearhub()
 

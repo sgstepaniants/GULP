@@ -31,6 +31,8 @@ folder = f"distances/{subset}/untrained"
 if pretrained:
     model_names = pretrained_reps
     folder = f"distances/{subset}/pretrained"
+if not os.path.exists(folder):
+    os.makedirs(folder)
 total_models = len(model_names)
 
 dist_pairs_saved = np.zeros((total_models, total_models), dtype=bool)
@@ -57,7 +59,7 @@ for filename in filenames:
             
             i1 = np.where(model_names == name1)[0][0]
             i2 = np.where(model_names == name2)[0][0]
-        elif line.count(": ") == 1:
+        elif line.count(": ") == 1 and line.count(" ") == 1:
             splits = line.split(": ")
             dist_name = splits[0]
             dist = float(splits[1])

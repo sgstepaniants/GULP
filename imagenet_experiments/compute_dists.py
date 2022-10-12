@@ -1,5 +1,6 @@
 import sys
 import os
+import pickle
 import math
 import random
 from itertools import product
@@ -8,7 +9,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 
-sys.path.append(os.path.abspath("../"))
+sys.path.append(os.path.abspath(".."))
 from distance_functions import *
 
 lmbda_range = np.power(10.0, range(-20, 5))
@@ -81,19 +82,26 @@ print(batch_size, flush=True)
 batch_pairs = model_pairs[(batch_num-1)*batch_size:batch_num*batch_size]
 print(len(batch_pairs), flush=True)
 
+dist_n = n
+#dist_n = 10000
+
 for pair in batch_pairs:
     name1, name2 = pair
     print(f'Computing {name1}, {name2}', flush=True)
     
     rep1 = np.load(f"{reps_folder}/{name1}.npy")
+    #rep1 = np.asarray(pickle.load(open(f"{reps_folder}/{name1}.pkl", 'rb'))).T
+    rep1 = rep1[:, :dist_n]
     # center and normalize
     rep1 = rep1 - rep1.mean(axis=1, keepdims=True)
-    rep1 = math.sqrt(n) * rep1 / np.linalg.norm(rep1)
-
+    rep1 = math.sqrt(dist_n) * rep1 / np.linalg.norm(rep1)
+    
     rep2 = np.load(f"{reps_folder}/{name2}.npy")
+    #rep2 = np.asarray(pickle.load(open(f"{reps_folder}/{name2}.pkl", 'rb'))).T
+    rep2 = rep2[:, :dist_n]
     # center and normalize
     rep2 = rep2 - rep2.mean(axis=1, keepdims=True)
-    rep2 = math.sqrt(n) * rep2 / np.linalg.norm(rep2)
+    rep2 = math.sqrt(dist_n) * rep2 / np.linalg.norm(rep2)
     
     all_dists = evaluate_distances(rep1, rep2)
     for dist_name in all_dists:

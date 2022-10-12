@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 # Run the script
-declare -i batches=230
+declare -i batches=180
 
 for (( i = 1; i <= $batches; i++ ))
 do
